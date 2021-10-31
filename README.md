@@ -1,5 +1,4 @@
 # sort-algorithms
-Sort algorithms
 
 Лабораторная работа 1. Методы сортировки.
 Задание:
