@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="arrInit(arr_first, arr_lenth);arrFresh();">
+    <input type="text" value="1-1000" disabled> 
+    <input type="button" onclick="arrInit(arr_1);arrFresh();" value="Init"> 
+    <input type="button" onclick="Shuffle(arr_1);arrFresh();" value="Shuffle"> 
+    <input type="button" onclick="arrSrt1(arr_1);arrFresh();" value="Quick Sort"> 
+    <input type="button" onclick="arrSrt2(arr_1);arrFresh();" value="Exchange Sort"> 
+    <hr/>
+    <p id="arr_list" style="font-size: x-small; font-family: monospace; word-wrap: break-word">*</p>
+
+<script>
+function arrInit(arr_first, arr_lenth) {
+    for (i = 0; i < arr_lenth - 1; i++) {arr_1[i] = arr_first + i }
+}
+function arrFresh() {
+    document.getElementById("arr_list").innerHTML = arr_1.toString().replaceAll(",", ", ");
+}  
+function Shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+function arrSrt1() {
+    quickSort( arr_1, 0, arr_1.length-1, true);
+}
+function arrSrt2() {
+    exchgSort(arr_1);
+}
+function swap( data_input, i ,low) {
+    var temp = data_input[ i ];
+    data_input[ i] = data_input[ low ];
+    data_input[low] = temp;
+}
+function quickSort( data, low, high, bgreater) {
+    var mid = data[ low ];
+    var index = low;
+    for( var i = low+1; i <= high; i++)  {
+        var needswap = false;
+        if( bgreater )
+            needswap = data[ i] <mid;
+        else
+            needswap = data[ i]> mid;
+        if( needswap) {
+            index++;
+            swap( data, i, index );
+        }
+    }
+    swap( data, index, low );
+    if( index - 1 >  low) quickSort( data, low ,index-1 ,bgreater);
+    if( index + 1 < high) quickSort( data, index + 1, high ,bgreater);
+}
+function exchgSort(a1) {
+    for(i = 0; i < (a1.length - 1); i++)
+	{
+		for (j = (i + 1); j < a1.length; j++)
+		{
+			if (a1[i] > a1[j]) //do swap
+			{
+				a1[i] = a1[i] + a1[j];
+				a1[j] = a1[i] - a1[j];
+				a1[i] = a1[i] - a1[j];
+			}
+		}
+	}
+}
+
+const arr_first = 1000;
+const arr_lenth = 5000;
+const arr_1 = new Array(arr_lenth);
+</script>
+</body>
+</html>
