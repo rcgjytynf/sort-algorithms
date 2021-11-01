@@ -4,20 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sort algorithmes comparysion</title>
 </head>
-<body onload="arrInit(arr_first, arr_lenth);arrFresh();">
-    <input type="text" value="1-1000" disabled> 
-    <input type="button" onclick="arrInit(arr_1);arrFresh();" value="Init"> 
-    <input type="button" onclick="Shuffle(arr_1);arrFresh();" value="Shuffle"> 
-    <input type="button" onclick="arrSrt1(arr_1);arrFresh();" value="Quick Sort"> 
-    <input type="button" onclick="arrSrt2(arr_1);arrFresh();" value="Exchange Sort"> 
-    <hr/>
-    <p id="arr_list" style="font-size: x-small; font-family: monospace; word-wrap: break-word">*</p>
-
+<body onload="arrInit(arr_1);arrFresh();">
+    <nav>
+    <!-- <input type="text" value="1-1000" disabled> -->
+    <input type="button" onclick="arrInit(arr_1);arrFresh();" value="Init Array"> 
+    <input type="button" onclick="Shuffle(arr_1);arrFresh();" value="Shuffle it">
+    <input type="button" onclick="arrSrt1(arr_1);arrFresh();" value="Quick Sort">
+    <input type="button" onclick="arrSrt2(arr_1);arrFresh();" value="Exchange Sort">
+    </nav>
+    <p id="arr_list">*</p>
+<!-- * -->
+<style>
+body { padding-top: 100px; }
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: gray;
+}
+#arr_list {
+    font-size: xx-small;
+    font-family: monospace;
+    word-wrap: break-word;
+}
+input[type="button"] {
+    width: 120px;
+    margin-top: 3px;
+    margin-left: 5px;
+    display: block;
+}
+</style>
+<!-- ** -->
 <script>
-function arrInit(arr_first, arr_lenth) {
-    for (i = 0; i < arr_lenth - 1; i++) {arr_1[i] = arr_first + i }
+function arrInit(array) {
+    for (i = 0; i < arr_lenth; i++) { array[i] = arr_first + i }
 }
 function arrFresh() {
     document.getElementById("arr_list").innerHTML = arr_1.toString().replaceAll(",", ", ");
@@ -74,9 +98,8 @@ function exchgSort(a1) {
 		}
 	}
 }
-
 const arr_first = 1000;
-const arr_lenth = 5000;
+const arr_lenth = 9000;
 const arr_1 = new Array(arr_lenth);
 </script>
 </body>
